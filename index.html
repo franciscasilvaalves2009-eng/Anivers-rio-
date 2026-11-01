@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite · 18 anos da Francisca Sandra</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff3de;--ink:#2a1a3a;--mut:#6d5a80;--card:#ffffffcc;--gold:#e0a400;--teal:#0e7c7b;--pink:#d6336c;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1228;--ink:#fff3de;--mut:#c4b4d6;--card:#2a1d3acc;--gold:#f2b705;--teal:#3cc2bf;--pink:#ff6b9d;--on:#10222a;color-scheme:dark}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:17px/1.45 "Bricolage Grotesque",system-ui,sans-serif;overflow-x:hidden;text-align:center}
+#c{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.bl{position:fixed;bottom:-140px;width:56px;height:70px;border-radius:50% 50% 48% 48%;opacity:.9;animation:up linear infinite;z-index:1}
+.bl:after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:60px;background:var(--mut);opacity:.5}
+@keyframes up{to{transform:translateY(-125vh) rotate(8deg)}}
+main{position:relative;z-index:3;max-width:520px;margin:auto;padding:34px 20px 50px}
+.top{font-size:18px;color:var(--mut);margin:0}
+.name{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:clamp(40px,12vw,64px);line-height:1;margin:8px 0 0}
+.n{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:clamp(150px,50vw,230px);line-height:.9;margin:6px 0 0;color:var(--gold);text-shadow:4px 4px 0 var(--pink);animation:pop 2.4s ease-in-out infinite}
+@keyframes pop{50%{transform:scale(1.06) rotate(-2deg)}}
+.anos{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;margin:0 0 6px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0}
+.cd div{background:var(--card);border-radius:14px;padding:10px 0;backdrop-filter:blur(4px)}
+.cd b{display:block;font:900 28px Fraunces,Georgia,serif}.cd span{font-size:13px;color:var(--mut)}
+.info{background:var(--card);border-radius:18px;padding:18px;margin:14px 0;backdrop-filter:blur(4px)}
+.info h2{font:700 22px Fraunces,Georgia,serif;margin:0 0 4px}
+.info p{margin:2px 0;color:var(--mut)}
+.btn{display:block;margin:10px 0;padding:15px;border-radius:14px;font:700 17px inherit;text-decoration:none;color:var(--on);background:var(--teal)}
+.btn.b2{background:var(--pink);color:#fff}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hint{font-size:13px;color:var(--mut);margin-top:18px}
+.in{opacity:0;transform:translateY(24px);animation:in .8s ease forwards}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bl,.n,.in{animation:none;opacity:1;transform:none}.bl{display:none}}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="bls" aria-hidden="true"></div>
+<main>
+ <p class="top in" style="font-size:24px">Meus</p>
+ <div class="n in" style="animation-delay:.3s">18</div>
+ <p class="anos in" style="animation-delay:.6s">anos</p>
+ <h1 class="name in" style="animation-delay:.9s">Francisca Sandra</h1>
+ <div class="cd in" style="animation-delay:1s" id="cd" aria-live="off"></div>
+ <div class="info in" style="animation-delay:1.2s"><h2>12 de março de 2027</h2><p>Sexta-feira, às 14 horas</p></div>
+ <div class="info in" style="animation-delay:1.4s"><h2>Espaço Paradaise</h2><p>R. Ceará, 535 - Centro</p><p>Eusébio - CE, 61761-230</p></div>
+ <a class="btn in" style="animation-delay:1.6s" id="map" target="_blank" rel="noopener">Ver no mapa</a>
+ <a class="btn b2 in" style="animation-delay:1.7s" id="wa" target="_blank" rel="noopener">Confirmar presença</a>
+ <p class="hint">Toque na tela para soltar confetes 🎉</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+$('map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Espaço Paradaise, R. Ceará, 535, Eusébio - CE');
+$('wa').href='https://wa.me/5585997919179?text='+encodeURIComponent('Oi! Confirmo minha presença nos 18 anos da Francisca Sandra, dia 12/03/2027 às 14 horas 🎉');
+const cols=['#f2b705','#d6336c','#0e7c7b','#7b4bd6','#ff8a3d'];
+const bs=$('bls');for(let i=0;i<9;i++){const b=document.createElement('i');b.className='bl';b.style.cssText=`left:${i*11+2}%;background:${cols[i%5]};animation-duration:${9+i%4*3}s;animation-delay:${-i*2}s`;bs.appendChild(b)}
+// contagem
+const T=new Date('2027-03-12T14:00:00-03:00');
+function cd(){let d=T-new Date();if(d<=0){$('cd').innerHTML='<div style="grid-column:1/-1"><b>Hoje é o dia!</b></div>';return}
+ const v=[Math.floor(d/864e5),Math.floor(d%864e5/36e5),Math.floor(d%36e5/6e4),Math.floor(d%6e4/1e3)],l=['dias','horas','min','seg'];
+ $('cd').innerHTML=v.map((x,i)=>`<div><b>${x}</b><span>${l[i]}</span></div>`).join('')}
+cd();setInterval(cd,1000);
+// confete
+const c=$('c'),x=c.getContext('2d');let P=[],W,H;
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight}rs();addEventListener('resize',rs);
+function add(px,py,n,burst){for(let i=0;i<n;i++)P.push({x:px,y:py,vx:burst?(Math.random()-.5)*12:(Math.random()-.5)*1.5,vy:burst?-Math.random()*11-3:Math.random()*2+1,s:Math.random()*7+4,r:Math.random()*6,vr:Math.random()*.3-.15,c:cols[i%5]})}
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function loop(){x.clearRect(0,0,W,H);if(!calm&&P.length<90&&Math.random()<.4)add(Math.random()*W,-10,1,false);
+ P=P.filter(p=>p.y<H+20);for(const p of P){p.x+=p.vx;p.y+=p.vy;p.vy+=.08;p.vx*=.99;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()}
+ requestAnimationFrame(loop)}
+loop();
+addEventListener('pointerdown',e=>{if(e.target.closest('a'))return;add(e.clientX,e.clientY,70,true)});
+setTimeout(()=>add(W/2,H*.4,90,true),900);
+</script></body></html>
